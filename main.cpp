@@ -6,6 +6,7 @@
 #include <set>
 
 using namespace std;
+using namespace std::chrono;
 
 /* NOTE: - Need to read the 20,000 lines of data from codes.txt into vector, list, and set
          - Need to sort the vector, sort the list. (Set is already sorted) 
@@ -16,8 +17,19 @@ int main() {
     
     ifstream fin("codes.txt");
     auto start = chrono::high_resolution_clock::now();
-    vector<string> vector_read; 
-    while (getline())
+    vector<string> vector_read;
+    int i = 0;
+    string temp_string; 
+    while (getline("codes.txt", temp_string)){
+        vector_read.push_back(temp_string);
+    }
+    fin.close();
+    auto end = chrono::high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(end - start);
+    
+    cout << "Time taken for reading into the vector: " << duration.count() << " milliseconds" << endl;
+
+
     
 
 
