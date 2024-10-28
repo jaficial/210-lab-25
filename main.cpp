@@ -9,6 +9,8 @@
 using namespace std;
 using namespace std::chrono;
 
+
+
 /* NOTE: - Need to read the 20,000 lines of data from codes.txt into vector, list, and set
          - Need to sort the vector, sort the list. (Set is already sorted) 
          - Insert the value "TESTCODE" in the middle of the vecotr, middle of the list, and 
@@ -21,8 +23,14 @@ int main() {
     vector<string> vector_read;
     int i = 0;
     string temp_string; 
-    while (getline(fin, temp_string)){
+    
+    // while (getline(fin, temp_string)){
+    //     vector_read.push_back(temp_string);
+    // }
+    for (int i = 0; i < 20000; i++){
+        getline(fin, temp_string);
         vector_read.push_back(temp_string);
+
     }
     fin.close();
     auto end = chrono::high_resolution_clock::now();
@@ -31,9 +39,9 @@ int main() {
     cout << "Time taken for reading into the vector: " << duration.count() << " milliseconds" << endl;
     cout << "This should output all the elements of the vector: " << endl;
     
-    for (string lines : vector_read){
-        cout << lines << endl;
-    }
+    // for (string lines : vector_read){
+    //     cout << lines << endl;
+    // }
     cout << "This is the amount of elements in the vector: " << vector_read.size() << endl;
     cout << "Time taken for reading into the vector: " << duration.count() << "milliseconds" << endl;
 
