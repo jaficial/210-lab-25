@@ -24,27 +24,16 @@ int main() {
     int i = 0;
     string temp_string; 
     
-    // while (getline(fin, temp_string)){
-    //     vector_read.push_back(temp_string);
-    // }
     for (int i = 0; i < 20000; i++){
         getline(fin, temp_string);
         vector_read.push_back(temp_string);
-
     }
     fin.close();
     auto end = chrono::high_resolution_clock::now();
-    auto duration = duration_cast<milliseconds>(end - start);
+    auto duration_vector_read = duration_cast<microseconds>(end - start);
     
-    cout << "Time taken for reading into the vector: " << duration.count() << " milliseconds" << endl;
-    cout << "This should output all the elements of the vector: " << endl;
-    
-    // for (string lines : vector_read){
-    //     cout << lines << endl;
-    // }
     cout << "This is the amount of elements in the vector: " << vector_read.size() << endl;
-    cout << "Time taken for reading into the vector: " << duration.count() << "milliseconds" << endl;
-
+    cout << "This is how long it took in microseconds: " << duration_vector_read.count() << endl;
 
     
 
