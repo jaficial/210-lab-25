@@ -127,6 +127,13 @@ int main() {
     for(int i = 0; i < set_midpoint; i++){
         set_iter++;
     }
+    // RETURN BACK
+
+    // Deleting the middle element of a set
+    start = chrono::high_resolution_clock::now();
+    set_example.erase(set_iter);
+    end = chrono::high_resolution_clock::now();
+    auto set_example_delete = duration_cast<microseconds>(end - start);
     
     return 0;
 }
