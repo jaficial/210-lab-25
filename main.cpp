@@ -34,7 +34,6 @@ int main() {
     
     cout << "This is the amount of elements in the vector: " << vector_read.size() << endl;
     cout << "This is how long it took in microseconds: " << duration_vector_read.count() << endl;
-
     return 0;
 }
 
