@@ -15,7 +15,7 @@ int menu();
 int menu(){
     int choice;
 
-    cout << "Select a race that you would like to perform from the list below:" << endl;
+    cout << endl << "Select a race that you would like to perform from the list below:" << endl;
     cout << "[1] Read" << endl;
     cout << "[2] Sort" << endl;
     cout << "[3] Insert" << endl;
@@ -35,8 +35,6 @@ int menu(){
            middle of the set
          - Delete the middle element of the vector, list, and set */ 
 int main() {
-    cout << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
-    
     bool race_flag = false;
     while (!race_flag){
         int menu_choice;
@@ -48,6 +46,7 @@ int main() {
 
         // Reading race
         if (menu_choice == 1){
+            cout << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
             // reading for vector:
             ifstream fin("codes.txt");
             auto start = chrono::high_resolution_clock::now();
