@@ -83,13 +83,26 @@ int main() {
 
     // inserting "TESTCODE" into the middle of the list
     int list_midpoint = list_example.size();
-    list_midpoint = list_midpoint / 2;
+    list_midpoint = list_midpoint / 2; // should be equal to 10000
     auto list_iter = list_example.begin();
-    for (int i = 0; i < )
+    for (int i = 0; i <= list_midpoint; i++){
+        list_iter++;
+    }
 
     start = chrono::high_resolution_clock::now();
-    list_example.insert(list_midpoint, TEST_CODE);
+    list_example.insert(list_iter, TEST_CODE); // inserts TEST_CODE at index list_iter - 1, which should be 10000 - 1 == 9999
+    end = chrono::high_resolution_clock::now();
+    auto list_example_insert = duration_cast<microseconds>(end - start);
 
+    // deleting the middle element
+    list_iter--; // since list.erase(iter) erases the element at the iter index, we need to delete the element at index 9999
+    start = chrono::high_resolution_clock::now();
+    list_example.erase(list_iter);
+    end = chrono::high_resolution_clock::now();
+    auto list_example_delete = duration_cast<microseconds>(end - start);
+
+
+    
     return 0;
 }
 
