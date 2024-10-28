@@ -10,6 +10,7 @@
 using namespace std;
 using namespace std::chrono;
 
+int menu();
 // CITED: Cited the "main_menu" function from my Lab 23/24 submission 
 int menu(){
     int choice;
@@ -19,9 +20,10 @@ int menu(){
     cout << "[2] Sort" << endl;
     cout << "[3] Insert" << endl;
     cout << "[4] Delete" << endl;
+    cout << "[5] End" << endl;
     cout << "Choice --> ";
     cin >> choice;
-    if ((choice < 1) || (choice >> 4)){
+    if ((choice < 1) || (choice >> 5)){
         cout << "Invalid Choice" << endl;
     }
     return choice;
@@ -33,29 +35,37 @@ int menu(){
            middle of the set
          - Delete the middle element of the vector, list, and set */ 
 int main() {
-    
-    ifstream fin("codes.txt");
-    auto start = chrono::high_resolution_clock::now();
-    vector<string> vector_read;
-    int i = 0;
-    string temp_string; 
-    
-    for (int i = 0; i < 20000; i++){
-        getline(fin, temp_string);
-        vector_read.push_back(temp_string);
-    }
-    fin.close();
-
-    auto end = chrono::high_resolution_clock::now();
-    auto duration_vector_read = duration_cast<microseconds>(end - start);
-    
-    cout << "This is the amount of elements in the vector: " << vector_read.size() << endl;
-    cout << "This is how long it took in microseconds: " << duration_vector_read.count() << endl;
-   
     cout << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
     
-    bool race_flag = 0;
-    while ()
+    bool race_flag = false;
+    while (!race_flag){
+        int menu_choice;
+        menu_choice = menu();
+
+        if (menu_choice == 5){
+            race_flag = true;
+        }
+
+        // Reading race
+        if (menu_choice == 1){
+            // reading for vector:
+            ifstream fin("codes.txt");
+            auto start = chrono::high_resolution_clock::now();
+            vector<string> vector_read;
+            string temp_string; 
+    
+            for (int i = 0; i < 20000; i++){
+                getline(fin, temp_string);
+                vector_read.push_back(temp_string);
+            }
+            fin.close();
+            auto end = chrono::high_resolution_clock::now();
+            auto duration_vector_read = duration_cast<microseconds>(end - start);
+            cout << setw(10) << "Read" << setw(10) << duration_vector_read.count();
+        }
+
+
+    }
 
 
     return 0;
