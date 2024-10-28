@@ -101,7 +101,32 @@ int main() {
     end = chrono::high_resolution_clock::now();
     auto list_example_delete = duration_cast<microseconds>(end - start);
 
+    
+    // ----------------------------------------------
 
+    ifstream fin_set("codes.txt");
+    set<string> set_example;
+    // reading the file into the set
+    start = chrono::high_resolution_clock::now();
+    for (int i = 0; i < 20000; i++){
+        getline(fin_set, temp_string);
+        set_example.insert(temp_string);
+    }
+    end = chrono::high_resolution_clock::now();
+    auto set_example_read = duration_cast<microseconds>(end - start);
+    fin_set.close();
+
+    // sorting the set
+    int set_example_sort = -1; // Sets are already automatically sorted
+
+    // Inserting "TESTCODE" into the middle of the set
+    auto set_iter = set_example.begin();
+    int set_midpoint = set_example.size();
+    set_midpoint = set_midpoint / 2;
+
+    for(int i = 0; i < set_midpoint; i++){
+        set_iter++;
+    }
     
     return 0;
 }
