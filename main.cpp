@@ -1,3 +1,6 @@
+// COMSC-210 | Lab 25 | Jed Aficial
+// github link: https://github.com/jaficial/210-lab-25
+
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -43,16 +46,15 @@ int main() {
     auto vector_example_insert = duration_cast<microseconds>(end - start);
 
     // deleting the middle element from the vector
-
     start = chrono::high_resolution_clock::now();
     vector_example.erase(vector_example.begin() + vector_midpoint); // CITED from https://cplusplus.com/reference/vector/vector/erase/ to learn how to use ".erase()" function
     end = chrono::high_resolution_clock::now();
     auto vector_example_delete = duration_cast<microseconds>(end - start);
 
     // beginning collecting data for LISTS
-
     ifstream fin_list("codes.txt");
     list<string> list_example;
+
     // reading the file into the list
     start = chrono::high_resolution_clock::now();
     for (int i = 0; i < 20000; i++){
