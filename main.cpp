@@ -2,7 +2,6 @@
 #include <iomanip>
 #include <fstream>
 #include <chrono>
-#include <ratio>
 #include <vector>
 #include <list>
 #include <set>
@@ -127,8 +126,11 @@ int main() {
     for(int i = 0; i < set_midpoint; i++){
         set_iter++;
     }
-    // RETURN BACK
-
+    start = chrono::high_resolution_clock::now();
+    set_example.insert(set_iter, TEST_CODE);
+    end = chrono::high_resolution_clock::now();
+    auto set_example_insert = duration_cast<microseconds>(end - start);
+    
     // Deleting the middle element of a set
     start = chrono::high_resolution_clock::now();
     set_example.erase(set_iter);
