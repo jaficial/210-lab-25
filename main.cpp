@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <chrono>
 #include <ratio>
@@ -29,11 +30,17 @@ int main() {
         vector_read.push_back(temp_string);
     }
     fin.close();
+
     auto end = chrono::high_resolution_clock::now();
     auto duration_vector_read = duration_cast<microseconds>(end - start);
     
     cout << "This is the amount of elements in the vector: " << vector_read.size() << endl;
     cout << "This is how long it took in microseconds: " << duration_vector_read.count() << endl;
+   
+    cout << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
+    cout << setw(10) << "Read" << endl;
+
+
     return 0;
 }
 
