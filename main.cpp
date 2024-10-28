@@ -6,7 +6,7 @@
 #include <vector>
 #include <list>
 #include <set>
-#include <algorithm>
+#include <algorithm> // used for "sort()"
 
 using namespace std;
 using namespace std::chrono;
@@ -54,16 +54,41 @@ int main() {
     end = chrono::high_resolution_clock::now();
     auto duration_vector_insert = duration_cast<microseconds>(end - start);
 
-    //
+    // deleting the middle element from the vector
 
-    // reading for list:
-    // ifstream fin_list("codes.txt");
+    start = chrono::high_resolution_clock::now();
+    vector_example.erase(vector_example.begin() + vector_midpoint); // CITED from https://cplusplus.com/reference/vector/vector/erase/ to learn how to use ".erase()" function
+    end = chrono::high_resolution_clock::now();
+    auto duration_vector_delete = duration_cast<microseconds>(end - start);
 
+    // ----------------------------------------------
 
+    ifstream fin_list("codes.txt");
+    list<string> list_example;
+    // reading the file into the list
+    start = chrono::high_resolution_clock::now();
+    for (int i = 0; i < 20000; i++){
+        getline(fin_list, temp_string);
+        list_example.push_back(temp_string);
+    }
+    end = chrono::high_resolution_clock::now();
+    auto duration_list_read = duration_cast<microseconds>(end - start);
+    fin_list.close();
 
+    // sorting the list
+    start = chrono::high_resolution_clock::now();
+    list_example.sort();
+    end = chrono::high_resolution_clock::now();
+    auto list_example_sort = duration_cast<microseconds>(end - start);
 
-    
+    // inserting "TESTCODE" into the middle of the list
+    int list_midpoint = list_example.size();
+    list_midpoint = list_midpoint / 2;
+    auto list_iter = list_example.begin();
+    for (int i = 0; i < )
 
+    start = chrono::high_resolution_clock::now();
+    list_example.insert(list_midpoint, TEST_CODE);
 
     return 0;
 }
