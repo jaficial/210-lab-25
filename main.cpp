@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <chrono>
+#include <ratio>
 #include <vector>
 #include <list>
 #include <set>
@@ -20,7 +21,7 @@ int main() {
     vector<string> vector_read;
     int i = 0;
     string temp_string; 
-    while (getline("codes.txt", temp_string)){
+    while (getline(fin, temp_string)){
         vector_read.push_back(temp_string);
     }
     fin.close();
@@ -28,6 +29,13 @@ int main() {
     auto duration = duration_cast<milliseconds>(end - start);
     
     cout << "Time taken for reading into the vector: " << duration.count() << " milliseconds" << endl;
+    cout << "This should output all the elements of the vector: " << endl;
+    
+    for (string lines : vector_read){
+        cout << lines << endl;
+    }
+    cout << "This is the amount of elements in the vector: " << vector_read.size() << endl;
+    cout << "Time taken for reading into the vector: " << duration.count() << "milliseconds" << endl;
 
 
     
